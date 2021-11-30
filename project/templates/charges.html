@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transfer
+{% endblock %}
+
+{% block main %}
+
+    <div class="row">
+        <div class="col-md-12 text-left mb-2">
+            <a class="btn btn-primary" href="/charge" role="button">New Charge</a>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-9 col-xl-7">
+            <h3 class="mb-4 pb-2">Latest Charges</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="width:25px;">Id</th>
+                        <th style="text-align: left;">Date (mm/dd/yyyy)</th>
+                        <th style="text-align: left;">From Department</th>
+                        <th style="text-align: left;">To Department</th>
+                        <th style="text-align: left;">Description</th>
+                        <th style="text-align: left;">Value</th>
+                        <th style="text-align: left;">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if charges %}
+                        {% for item in charges %}
+                            <tr>
+                                <td>{{item.id}}</td>
+                                <td>{{item.date}}</td>
+                                <td>{{item.from_department_id}} - {{item.from_department_name}}</td>
+                                <td>{{item.to_department_id}} - {{item.to_department_name}}</td>
+                                <td>{{item.description}}</td>
+                                <td>{{item.value}}</td>
+                                <td>
+                                {% if item.status == 0 %}
+                                    {% if department_id == item.from_department_id %}
+                                        Waiting
+                                    {% else %}
+                                        <a class="btn btn-primary" role="button" href="/charge-accept?chargeId={{item.id}}">Accept</a>
+                                        <a class="btn btn-primary" role="button" href="/charge-decline?chargeId={{item.id}}">Decline</a>
+                                    {% endif %}
+                                {% elif item.status == 0 %}
+                                    Cick to Confirm
+                                {% elif item.status == 1 %}
+                                    Accepted
+                                {% elif item.status == 2 %}
+                                    Declined
+                                {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                            <tr>
+                                <td colspan=7>None</td>
+                            </tr>
+                    {% endif %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">TOTAL</td>
+                        <td><b>{{total}}</b></td>
+                    </tr>
+                </tfoot>
+
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

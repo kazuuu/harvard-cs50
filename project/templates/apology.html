@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+
+
+<div class="card text-center">
+  <div class="card-header">
+    Message
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ bottom }}</h5>
+    <!--<p class="card-text">{{ bottom }}</p>-->
+    <a href="/" class="btn btn-primary">Back</a>
+  </div>
+  <!--<div class="card-footer text-muted">-->
+  <!--  2 days ago-->
+  <!--</div>-->
+</div>
+
+
+    <!--<img alt="{{ top }}" class="border" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://i.imgur.com/CsCgN7Ll.png" title="{{ top }}">-->
+{% endblock %}

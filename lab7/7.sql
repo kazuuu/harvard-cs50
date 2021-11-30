@@ -1,0 +1,1 @@
+select sum(songs.energy)/count(songs.energy) from songs LEFT JOIN artists ON songs.artist_id = artists.id where artists.name = "Drake";

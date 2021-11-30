@@ -1,0 +1,1 @@
+select sum(rating)/count(rating) from movies left join ratings on movies.id = ratings.movie_id where movies.year = 2012;

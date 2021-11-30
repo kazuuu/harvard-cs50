@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Departments
+{% endblock %}
+
+{% block main %}
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <h4>Select Department</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-condensed table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th style="width:auto;">Id</th>
+                        <th style="">Department Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if myDepartments %}
+                        {% for item in myDepartments %}
+                            <tr class="table-row" data-href="/select-department?departmentId={{item.id}}">
+                                <td>{{item.id}}</td>
+                                <td>{{item.name}}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                            <tr>
+                                <td colspan=3>You don´t have any department. <a class="" role="button" href="/departments">click here</a> to add a new department</td>
+                            </tr>
+                    {% endif %}
+                </tbody>
+                <!--<tfoot>-->
+                <!--    <tr>-->
+                <!--        <td colspan="2">TOTAL</td>-->
+                <!--        <td><b>{{userTotal}}</b></td>-->
+                <!--    </tr>-->
+                <!--</tfoot>-->
+
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+        <title>Birthdays</title>
+    </head>
+    <body>
+        <div class="jumbotron">
+            <h1>Birthdays {{teste}}</h1>
+        </div>
+        <div class="container">
+            <div class="section">
+
+                <h2>Add a Birthday</h2>
+                <!-- TODO: Create a form for users to submit a name, a month, and a day -->
+                <form action="/" method="post">
+                    <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Name" autocomplete="off" required>
+                    <input type="number" class="form-control" id="inputMonth" name="inputMonth" placeholder="Month" max=12 min=1 required>
+                    <input type="number" class="form-control" id="inputDay" name="inputDay" placeholder="Day" max=31 min=1 required>
+                    <button type="submit" class="btn btn-primary">Add Birthday</button>
+
+                </form>
+            </div>
+
+            <div class="section">
+
+                <h2>All Birthdays</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Birthday</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for birthday in birthdays %}
+                            <tr>
+                                <td>{{birthday.name}}</td>
+                                <td>{{birthday.month}}/{{birthday.day}}</td>
+                                <td>
+                                    <a href="/delete?id={{birthday.id}}">CLICK TO DELETE</a>
+                                    <!--<form action="/" method="delete">-->
+                                    <!--    <input type="hidden" name="inputId" value="{{birthday.id}}">-->
+                                    <!--    <button type="submit" name="btnDelete" class="btn btn-primary">Delete</button>-->
+                                    <!--</form>-->
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        <!-- TODO: Loop through the database entries to display them in this table -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

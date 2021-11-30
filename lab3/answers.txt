@@ -1,0 +1,27 @@
+sort1 uses: Bubble Sort
+
+How do you know?: The sorting time is faster when sorting sorted elements.
+
+sort2 uses: Merge Sort
+
+How do you know?: It's the fastest sort algorithm in all situations
+
+sort3 uses: Selection Sort
+
+How do you know?: It's the slowest sort algorithm
+
+
+Sort1
+  ramdom50000 = 15.811
+  reversed50000 = 11.798
+  sorted50000 = 4.487
+
+Sort2:
+  ramdom50000 = 4.269
+  reversed50000 = 5.186
+  sorted50000 = 4,883
+
+Sort3:
+  ramdom50000 = 9.822
+  reversed50000 = 7.447
+  sorted50000 = 10.462

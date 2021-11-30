@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transfer
+{% endblock %}
+
+{% block main %}
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-9 col-xl-7">
+            <h3 class="mb-4 pb-2">All Transactions</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="width:25px;">Id</th>
+                        <th style="text-align: left;">Date (mm/dd/yyyy)</th>
+                        <th style="text-align: left;">Department</th>
+                        <th style="text-align: left;">Description</th>
+                        <th style="text-align: left;">Type</th>
+                        <th style="text-align: left;">External Id</th>
+                        <th style="text-align: left;">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if transactions %}
+                        {% for item in transactions %}
+                            <tr>
+                                <td>{{item.id}}</td>
+                                <td>{{item.date}}</td>
+                                <td>{{item.department_id}} - {{item.department_name}}</td>
+                                <td>{{item.description}}</td>
+                                <td>{{item.type}}</td>
+                                <td>{{item.externalId}}</td>
+                                <td>{{item.value}}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                            <tr>
+                                <td colspan=7>None</td>
+                            </tr>
+                    {% endif %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6">TOTAL</td>
+                        <td><b>{{total}}</b></td>
+                    </tr>
+                </tfoot>
+
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

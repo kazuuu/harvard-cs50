@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transfer
+{% endblock %}
+
+{% block main %}
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-9 col-xl-7">
+          <div class="card">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="mb-4 pb-2">Transfer To</h3>
+                <form action="/transfer" method="post">
+                    <div class="form-group">
+                        <select class="form-control form-control-lg w-100" name="to_department_id" style="">
+                            <option value="" disabled="" selected="">Select</option>
+                            {% for item in departments %}
+                                {% if not item.id == department_id %}
+                                    <option value="{{item.id}}">{{item.name}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- Date Picker Input -->
+                    <div class="form-group mb-4">
+                        <div class="datepicker date input-group p-0 shadow-sm">
+                            <input type="text" placeholder="Choose a reservation date" class="form-control py-4 px-4 bg-white" id="reservationDate" name="date" readonly>
+                            <div class="input-group-append"><span class="input-group-text px-4"><i class="fa fa-clock-o"></i></span></div>
+                        </div>
+                    </div>
+                    <!-- DEnd ate Picker Input -->
+
+
+                    <div class="form-group">
+                        <input autocomplete="off" autofocus class="form-control w-100" name="value" id="value" placeholder="Value" data-inputmask="'alias': 'currency'" style="text-align: right;">
+                    </div>
+                    <div class="form-group">
+                        <input autocomplete="off" autofocus class="form-control w-100" name="description" placeholder="Description" type="text">
+                    </div>
+                    <button class="btn btn-primary  w-100 mb-2" type="submit">Transfer</button>
+                    <a class="btn btn-primary w-100" href="/transfers" role="button">Cancel</a>
+                </form>
+            </div>
+          </div>
+        </div>
+
+    <!--<div class="row">-->
+    <!--    <div class="col-md-12">-->
+    <!--        <table class="table table-striped">-->
+    <!--            <thead>-->
+    <!--                <tr>-->
+    <!--                    <th style="width:25px;">Id</th>-->
+    <!--                    <th style="text-align: left;">Date</th>-->
+    <!--                    <th style="text-align: left;">From Department ID</th>-->
+    <!--                    <th style="text-align: left;">To Department ID</th>-->
+    <!--                    <th style="text-align: left;">Value</th>-->
+    <!--                    <th style="text-align: left;">Description</th>-->
+    <!--                </tr>-->
+    <!--            </thead>-->
+    <!--            <tbody>-->
+    <!--                {% if transfers %}-->
+    <!--                    {% for item in transfers %}-->
+    <!--                        <tr>-->
+    <!--                            <td>{{item.id}}</td>-->
+    <!--                            <td>{{item.date}}</td>-->
+    <!--                            <td>{{item.from_department_id}}</td>-->
+    <!--                            <td>{{item.to_department_id}}</td>-->
+    <!--                            <td>{{item.value}}</td>-->
+    <!--                            <td>{{item.description}}</td>-->
+    <!--                        </tr>-->
+    <!--                    {% endfor %}-->
+    <!--                {% else %}-->
+    <!--                        <tr>-->
+    <!--                            <td colspan=6>None</td>-->
+    <!--                        </tr>-->
+    <!--                {% endif %}-->
+    <!--            </tbody>-->
+    <!--            <tfoot>-->
+    <!--                <tr>-->
+    <!--                    <td colspan="5">TOTAL</td>-->
+    <!--                    <td><b>{{userTotal}}</b></td>-->
+    <!--                </tr>-->
+    <!--            </tfoot>-->
+
+    <!--        </table>-->
+    <!--    </div>-->
+    <!--</div>-->
+
+{% endblock %}

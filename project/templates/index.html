@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <div class="card">
+        <h5 class="card-header">Balance</h5>
+        <div class="card-body">
+            <h5 class="card-title">{{departmentBalance}}</h5>
+            <!--<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
+            <a href="/transfer" class="btn btn-primary">Transfer</a>
+            <a href="/charge" class="btn btn-primary">Charge</a>
+            <a href="/revenue-expense" class="btn btn-primary">Add Revenue or Expense</a>
+        </div>
+    </div>
+{% endblock %}
+

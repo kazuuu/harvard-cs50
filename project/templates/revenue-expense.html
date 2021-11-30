@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Charge
+{% endblock %}
+
+{% block main %}
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-9 col-xl-7">
+          <div class="card">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="mb-4 pb-2">Add Revenue or Expense</h3>
+                <form action="/revenue-expense" method="post">
+                    <div class="form-group">
+                        <select class="form-control form-control-lg w-100" name="type" style="">
+                            <option value="" disabled="" selected="">Select</option>
+                            <option value="{{transactionType.EXPENSE.value}}">Expense</option>
+                            <option value="{{transactionType.REVENUE.value}}">Revenue</option>
+                        </select>
+                    </div>
+
+                    <!-- Date Picker Input -->
+                    <div class="form-group mb-4">
+                        <div class="datepicker date input-group p-0 shadow-sm">
+                            <input type="text" placeholder="Choose a reservation date" class="form-control py-4 px-4 bg-white" id="reservationDate" name="date" readonly>
+                            <div class="input-group-append"><span class="input-group-text px-4"><i class="fa fa-clock-o"></i></span></div>
+                        </div>
+                    </div>
+                    <!-- DEnd ate Picker Input -->
+
+
+                    <div class="form-group">
+                        <input autocomplete="off" autofocus class="form-control w-100" name="value" id="value" placeholder="Value" data-inputmask="'alias': 'currency'" style="text-align: right;">
+                    </div>
+                    <div class="form-group">
+                        <input autocomplete="off" autofocus class="form-control w-100" name="description" placeholder="Description" type="text">
+                    </div>
+                    <button class="btn btn-primary  w-100" type="submit">Submit</button>
+                </form>
+            </div>
+          </div>
+        </div>
+{% endblock %}
